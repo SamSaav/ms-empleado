@@ -1,0 +1,31 @@
+info:
+  name: "@project.artifactId@"
+  version: "@project.version@"
+  description: "@project.description@"
+  running-profile: "${spring.profiles.active}"
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+server:
+  port: 8082
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ms-empleado?createDatabaseIfNotExist=true
+    username: postgres
+    password: sam1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
