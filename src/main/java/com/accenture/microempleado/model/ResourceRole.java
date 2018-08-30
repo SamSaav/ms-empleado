@@ -1,13 +1,13 @@
 package com.accenture.microempleado.model;
 
 public enum ResourceRole {
-    ASSOCIATE {
-        public String toString() {
+    ASSOCIATE{
+        public String toString(){
             return "Application Development Associate";
         }
     },
-    ANALYST {
-        public String toString() {
+    ANALYST{
+        public String toString(){
             return "Application Development Analyst";
         }
     },
@@ -15,5 +15,5 @@ public enum ResourceRole {
         public String toString() {
             return "Application Development Senior Analyst";
         }
-    },
+    }
 }

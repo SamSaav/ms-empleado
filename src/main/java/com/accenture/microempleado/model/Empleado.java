@@ -23,6 +23,8 @@ public class Empleado {
     private Long project;
 
 
+
+
     public Empleado() {
     }
 
@@ -37,6 +39,13 @@ public class Empleado {
         this.englishLevel = englishLevel;
         this.officeLocation = officeLocation;
     }
+
+
+
+
+
+
+
 
 
     public long getId() {
