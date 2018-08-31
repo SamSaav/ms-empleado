@@ -26,7 +26,7 @@ public class EmpleadoService {
         } else return false;
     }
 
-
+//deleteEmpleado: oculta al empleado para que no se pueda ver, cambia el flag a false
     public Boolean deleteEmpleado(Long id) {
         if (id != null && empleadoRepository.findById(id).get() != null) {
             Empleado deletedEmpleado = empleadoRepository.findById(id).get();
@@ -47,7 +47,7 @@ public class EmpleadoService {
         return ids.stream().map(m->makeDeleteDTO(m)).collect(Collectors.toList());
     }
 
-
+//removeEmpleado: saca de la base al empleado
     public Boolean removeEmpleado(Long id) {
         if (id != null && empleadoRepository.findById(id).get() != null) {
             return empleadoRepository.removeById(id);

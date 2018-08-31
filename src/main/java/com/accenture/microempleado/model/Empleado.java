@@ -21,17 +21,13 @@ public class Empleado {
     private String officeLocation;
     private Long client;
     private Long project;
+    private Boolean statusEmpleado;
 
 
     public Empleado() {
     }
 
-<<<<<<< Updated upstream
-
-    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
-=======
     public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation, Boolean statusEmpleado) {
->>>>>>> Stashed changes
         this.name = name;
         this.lastName = lastName;
         this.enterpriseID = enterpriseID;
@@ -40,15 +36,23 @@ public class Empleado {
         this.resourceRole = resourceRole;
         this.englishLevel = englishLevel;
         this.officeLocation = officeLocation;
+        this.statusEmpleado = statusEmpleado;
     }
 
 
-
-
-
-
-
-
+    public Empleado updateEmpleado(Empleado empleado){
+        this.setName(empleado.getName());
+        this.setLastName(empleado.getLastName());
+        this.setEnterpriseID(empleado.getEnterpriseID());
+        this.setPhoneNumber(empleado.getPhoneNumber());
+        this.setGender(empleado.getGender());
+        this.setResourceRole(empleado.getResourceRole());
+        this.setEnglishLevel(empleado.getEnglishLevel());
+        this.setOfficeLocation(empleado.getOfficeLocation());
+        this.setClient(empleado.getClient());
+        this.setProject(empleado.getProject());
+        return this;
+    }
 
     public long getId() {
         return id;
@@ -136,5 +140,13 @@ public class Empleado {
 
     public void setProject(Long project) {
         this.project = project;
+    }
+
+    public Boolean getStatusEmpleado() {
+        return statusEmpleado;
+    }
+
+    public void setStatusEmpleado(Boolean statusEmpleado) {
+        this.statusEmpleado = statusEmpleado;
     }
 }
