@@ -63,6 +63,7 @@ public class EmpleadoService {
         return dto;
     }
 
+    public Boolean updateEmpleado(Empleado empleado){
         if (empleado != null && empleadoRepository.findById(empleado.getId()) != null) {
             Empleado changedEmpleado = empleadoRepository.findById(empleado.getId()).get();
             changedEmpleado.updateEmpleado(empleado);
@@ -122,8 +123,6 @@ public class EmpleadoService {
         return ids.stream().map(m->makeRemoveDTO(m)).collect(Collectors.toList());
     }
 
-
-    public Boolean updateEmpleado(Empleado empleado) {
 }
 
 
