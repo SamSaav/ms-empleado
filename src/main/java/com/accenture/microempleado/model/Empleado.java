@@ -21,6 +21,7 @@ public class Empleado {
     private String officeLocation;
     private Long client;
     private Long project;
+    private Boolean statusEmpleado;
 
 
 
@@ -28,8 +29,7 @@ public class Empleado {
     public Empleado() {
     }
 
-
-    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
+    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation, Boolean statusEmpleado) {
         this.name = name;
         this.lastName = lastName;
         this.enterpriseID = enterpriseID;
@@ -38,12 +38,8 @@ public class Empleado {
         this.resourceRole = resourceRole;
         this.englishLevel = englishLevel;
         this.officeLocation = officeLocation;
+        this.statusEmpleado = statusEmpleado;
     }
-
-
-
-
-
 
 
 
@@ -134,5 +130,13 @@ public class Empleado {
 
     public void setProject(Long project) {
         this.project = project;
+    }
+
+    public Boolean getStatusEmpleado() {
+        return statusEmpleado;
+    }
+
+    public void setStatusEmpleado(Boolean statusEmpleado) {
+        this.statusEmpleado = statusEmpleado;
     }
 }
