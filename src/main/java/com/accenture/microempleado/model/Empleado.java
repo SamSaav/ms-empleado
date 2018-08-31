@@ -1,26 +1,35 @@
 package com.accenture.microempleado.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "EMP_ID")
     private long id;
 
+    @Column(name = "EMP_FNAME")
     private String name;
+    @Column(name = "EMP_LNAME")
     private String lastName;
+    @Column(name = "EMP_ENTERPRISE_ID")
     private String enterpriseID;
+    @Column(name = "EMP_PHONE")
     private Integer phoneNumber;
+    @Column(name = "EMP_GENDER")
     private String gender;
+    @Column(name = "EMP_RESOURCE_ROLE")
     private String resourceRole;
+    @Column(name = "EMP_ENGLISH_LVL")
     private String englishLevel;
+    @Column(name = "EMP_OFFICE_LOCATION")
     private String officeLocation;
+    @Column(name = "EMP_CLIENT")
     private Long client;
+    @Column(name = "EMP_PROJECT")
     private Long project;
+    @Column(name = "EMP_STATUS")
     private Boolean statusEmpleado;
 
 
