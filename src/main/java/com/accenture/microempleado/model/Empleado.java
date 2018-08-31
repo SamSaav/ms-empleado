@@ -23,13 +23,15 @@ public class Empleado {
     private Long project;
 
 
-
-
     public Empleado() {
     }
 
+<<<<<<< Updated upstream
 
     public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
+=======
+    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation, Boolean statusEmpleado) {
+>>>>>>> Stashed changes
         this.name = name;
         this.lastName = lastName;
         this.enterpriseID = enterpriseID;
