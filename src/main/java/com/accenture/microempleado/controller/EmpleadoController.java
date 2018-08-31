@@ -21,7 +21,7 @@ public class EmpleadoController {
         return empleadoService.getAllEmpleadosActivos();
     }
 
-    @GetMapping("/hiden")
+    @GetMapping("hiden")
     @ResponseBody
     public List<Object> showAllInactive(){
         return empleadoService.getAllEmpleadosInactivos();
@@ -39,19 +39,19 @@ public class EmpleadoController {
         return empleadoService.saveEmpleado(empleado);
     }
 
-    @PostMapping("/update")
+    @PostMapping("update")
     @ResponseBody
     public Boolean updateEmpleado(@RequestBody Empleado empleado){
         return empleadoService.updateEmpleado(empleado);
     }
 
-    @GetMapping("/delete")
+    @PostMapping("delete")
     @ResponseBody
     public List<Object> deleteEmpleado(@RequestBody List<Long> ids){
         return empleadoService.makeDeletedDTO(ids);
     }
 
-    @DeleteMapping("/permanentDelete")
+    @DeleteMapping("permanentDelete")
     @ResponseBody
     public List<Object> removeEmpleado(@RequestBody List<Long> ids){
         return empleadoService.makeRemovedDTO(ids);
