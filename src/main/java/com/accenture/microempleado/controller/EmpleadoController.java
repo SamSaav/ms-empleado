@@ -39,5 +39,23 @@ public class EmpleadoController {
         return empleadoService.saveEmpleado(empleado);
     }
 
+    @PostMapping("/update")
+    @ResponseBody
+    public Boolean updateEmpleado(@RequestBody Empleado empleado){
+        return empleadoService.updateEmpleado(empleado);
+    }
+
+    @GetMapping("/delete")
+    @ResponseBody
+    public List<Object> deleteEmpleado(@RequestBody List<Long> ids){
+        return empleadoService.makeDeletedDTO(ids);
+    }
+
+    @DeleteMapping("/permanentDelete")
+    @ResponseBody
+    public List<Object> removeEmpleado(@RequestBody List<Long> ids){
+        return empleadoService.makeRemovedDTO(ids);
+    }
+
 }
 
