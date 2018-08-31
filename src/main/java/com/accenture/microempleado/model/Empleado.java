@@ -24,8 +24,6 @@ public class Empleado {
     private Boolean statusEmpleado;
 
 
-
-
     public Empleado() {
     }
 
@@ -42,7 +40,19 @@ public class Empleado {
     }
 
 
-
+    public Empleado updateEmpleado(Empleado empleado){
+        this.setName(empleado.getName());
+        this.setLastName(empleado.getLastName());
+        this.setEnterpriseID(empleado.getEnterpriseID());
+        this.setPhoneNumber(empleado.getPhoneNumber());
+        this.setGender(empleado.getGender());
+        this.setResourceRole(empleado.getResourceRole());
+        this.setEnglishLevel(empleado.getEnglishLevel());
+        this.setOfficeLocation(empleado.getOfficeLocation());
+        this.setClient(empleado.getClient());
+        this.setProject(empleado.getProject());
+        return this;
+    }
 
     public long getId() {
         return id;
