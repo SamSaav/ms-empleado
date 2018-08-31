@@ -29,7 +29,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation, Boolean statusEmpleado) {
+    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
         this.name = name;
         this.lastName = lastName;
         this.enterpriseID = enterpriseID;
@@ -38,7 +38,7 @@ public class Empleado {
         this.resourceRole = resourceRole;
         this.englishLevel = englishLevel;
         this.officeLocation = officeLocation;
-        this.statusEmpleado = statusEmpleado;
+        this.statusEmpleado = true;
     }
 
 

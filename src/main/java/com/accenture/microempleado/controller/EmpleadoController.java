@@ -17,8 +17,14 @@ public class EmpleadoController {
 
     @GetMapping
     @ResponseBody
-    public List<Object> showAll(){
-        return empleadoService.getAllEmpleados();
+    public List<Object> showAllActive(){
+        return empleadoService.getAllEmpleadosActivos();
+    }
+
+    @GetMapping("/hiden")
+    @ResponseBody
+    public List<Object> showAllInactive(){
+        return empleadoService.getAllEmpleadosInactivos();
     }
 
     @GetMapping("{id}")

@@ -16,9 +16,14 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    public List<Object> getAllEmpleados(){
+    public List<Object> getAllEmpleadosActivos(){
         List<Empleado> lstEmpleados = empleadoRepository.findAll();
-        return makeListEmpleados(lstEmpleados);
+        return makeListEmpleadosActivos(lstEmpleados);
+    }
+
+    public  List<Object> getAllEmpleadosInactivos(){
+        List<Empleado> lstEmpleados = empleadoRepository.findAll();
+        return makeListEmpleadosInactivos(lstEmpleados);
     }
 
     public Map<String, Object> getOneEmpleado(Long id){
@@ -31,9 +36,16 @@ public class EmpleadoService {
         return empleado;
     }
 
-    public List<Object> makeListEmpleados(List<Empleado> empleados){
+    public List<Object> makeListEmpleadosActivos(List<Empleado> empleados){
         return empleados.stream()
                 .filter(e -> e.getStatusEmpleado().equals(true) && e.getStatusEmpleado() != null)
+                .map(e -> getEmpledoDTO(e.getId()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Object> makeListEmpleadosInactivos(List<Empleado> empleados){
+        return empleados.stream()
+                .filter(e -> e.getStatusEmpleado().equals(false) && e.getStatusEmpleado() != null)
                 .map(e -> getEmpledoDTO(e.getId()))
                 .collect(Collectors.toList());
     }
