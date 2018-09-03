@@ -11,5 +11,5 @@ public interface EmpleadoRepository extends JpaRepository<Empleado,Long> {
 
     Empleado getById(Long id);
     Optional<Empleado> findById(Long id);
-    Boolean removeById(Long id);
+
 }

@@ -5,6 +5,7 @@ import com.accenture.microempleado.repositories.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,22 +67,25 @@ public class EmpleadoService {
     public Boolean updateEmpleado(Empleado empleado){
         if (empleado != null && empleadoRepository.findById(empleado.getId()) != null) {
             Empleado changedEmpleado = empleadoRepository.findById(empleado.getId()).get();
-            changedEmpleado.updateEmpleado(empleado);
+            changedEmpleado.updateEmpleadoData(empleado);
+            empleadoRepository.save(changedEmpleado);
             return true;
         } else return false;
     }
+
 
 //deleteEmpleado: oculta al empleado para que no se pueda ver, cambia el flag a false
     public Boolean deleteEmpleado(Long id) {
         if (id != null && empleadoRepository.findById(id).get() != null) {
             Empleado deletedEmpleado = empleadoRepository.findById(id).get();
             deletedEmpleado.setStatusEmpleado(false);
+            empleadoRepository.save(deletedEmpleado);
             return true;
         }
         else return false;
     }
 
-    private Map<String,Object> makeDeleteDTO(Long id){
+    public Map<String,Object> makeDeleteDTO(Long id){
         Map<String,Object> dto = new LinkedHashMap<>();
         dto.put("id",id);
         dto.put("deleted",deleteEmpleado(id));
@@ -93,9 +97,11 @@ public class EmpleadoService {
     }
 
 //removeEmpleado: saca de la base al empleado
+    @Transactional
     public Boolean removeEmpleado(Long id) {
         if (id != null && empleadoRepository.findById(id).get() != null) {
-            return empleadoRepository.removeById(id);
+            empleadoRepository.deleteById(id);
+            return true;
         }
         return false;
     }
@@ -112,7 +118,7 @@ public class EmpleadoService {
         return empleadosRemoved;
     }
 
-    private Map<String,Object> makeRemoveDTO(Long id){
+    public Map<String,Object> makeRemoveDTO(Long id){
         Map<String,Object> dto = new LinkedHashMap<>();
         dto.put("id",id);
         dto.put("removed",removeEmpleado(id));

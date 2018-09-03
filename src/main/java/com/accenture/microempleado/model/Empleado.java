@@ -49,7 +49,7 @@ public class Empleado {
     }
 
 
-    public Empleado updateEmpleado(Empleado empleado){
+    public Empleado updateEmpleadoData(Empleado empleado){
         this.setName(empleado.getName());
         this.setLastName(empleado.getLastName());
         this.setEnterpriseID(empleado.getEnterpriseID());

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/")
@@ -45,17 +46,15 @@ public class EmpleadoController {
         return empleadoService.updateEmpleado(empleado);
     }
 
-    @PostMapping("delete")
+    @PostMapping("delete/{id}")
     @ResponseBody
-    public List<Object> deleteEmpleado(@RequestBody List<Long> ids){
-        return empleadoService.makeDeletedDTO(ids);
+    public Map<String, Object> deleteEmpleado(@PathVariable Long id){
+        return empleadoService.makeDeleteDTO(id);
     }
 
-    @DeleteMapping("permanentDelete")
+    @DeleteMapping("permanentDelete/{id}")
     @ResponseBody
-    public List<Object> removeEmpleado(@RequestBody List<Long> ids){
-        return empleadoService.makeRemovedDTO(ids);
-    }
+    public Map<String, Object> removeEmpleado(@PathVariable("id") Long id){ return empleadoService.makeRemoveDTO(id); }
 
 }
 
