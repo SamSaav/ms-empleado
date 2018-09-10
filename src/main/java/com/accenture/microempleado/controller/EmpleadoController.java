@@ -16,7 +16,7 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoService empleadoService;
 
-    @GetMapping
+    @GetMapping("active")
     @ResponseBody
     public List<Object> showAllActive(){
         return empleadoService.getAllEmpleadosActivos();
