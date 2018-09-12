@@ -40,7 +40,7 @@ public class EmpleadoController {
         return empleadoService.saveEmpleado(empleado);
     }
 
-    @PostMapping("update")
+    @PostMapping("update") // cambiar por un put
     @ResponseBody
     public Boolean updateEmpleado(@RequestBody Empleado empleado){
         return empleadoService.updateEmpleado(empleado);
