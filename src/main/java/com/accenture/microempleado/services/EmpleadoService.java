@@ -55,12 +55,16 @@ public class EmpleadoService {
         Empleado empleado = empleadoRepository.getById(id);
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("ID", empleado.getId());
-        dto.put("fullName", empleado.getLastName() + ", " + empleado.getName());
+        dto.put("name", empleado.getName());
+        dto.put("lastName", empleado.getLastName());
         dto.put("enterpriseID", empleado.getEnterpriseID());
         dto.put("phoneNumber", empleado.getPhoneNumber());
         dto.put("resourceRole", empleado.getResourceRole());
         dto.put("englishLevel", empleado.getEnglishLevel());
         dto.put("officeLocation", empleado.getOfficeLocation());
+        dto.put("project", empleado.getProject());
+        dto.put("client", empleado.getClient());
+        dto.put("active", empleado.getStatusEmpleado());
         return dto;
     }
 

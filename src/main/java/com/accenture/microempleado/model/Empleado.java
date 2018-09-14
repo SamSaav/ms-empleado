@@ -3,6 +3,7 @@ package com.accenture.microempleado.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "EMPLOYEE")
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
