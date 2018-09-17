@@ -2,13 +2,13 @@ package com.accenture.microempleado.model;
 
 public enum OfficeLocation {
 
-    BUENOS_AIRES{
-        public String toString(){
+    BUENOS_AIRES {
+        public String toString() {
             return "Buenos Aires Roque Saenz Peña";
         }
     },
-    ROSARIO{
-        public String toString(){
+    ROSARIO {
+        public String toString() {
             return "Rosario Santa Fe";
         }
     },

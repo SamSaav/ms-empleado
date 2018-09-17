@@ -3,6 +3,8 @@ package com.accenture.microempleado.services;
 import com.accenture.microempleado.model.Empleado;
 import com.accenture.microempleado.repositories.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,7 +19,11 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    public List<Object> getAllEmpleadosActivos(){
+    public List<Object> getAllEmpleados() {
+        return empleadoRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    public List<Object> getAllEmpleadosActivos() {
         List<Empleado> lstEmpleados = empleadoRepository.findAll();
         return makeListEmpleadosActivos(lstEmpleados);
     }
@@ -32,9 +38,12 @@ public class EmpleadoService {
         return getEmpledoDTO(empleado.getId());
     }
 
-    public Empleado saveEmpleado(Empleado empleado){
-        empleadoRepository.save(empleado);
-        return empleado;
+    public ResponseEntity<String> saveEmpleado(Empleado newEmpleado) {
+        if(empleadoRepository.findByEnterpriseID(newEmpleado.getEnterpriseID())!=null){
+            return new ResponseEntity<>("Enterprise ID ya existe", HttpStatus.FORBIDDEN);
+        }
+        empleadoRepository.save(newEmpleado);
+        return new ResponseEntity<>("Empleado creado",HttpStatus.OK);
     }
 
     public List<Object> makeListEmpleadosActivos(List<Empleado> empleados){
@@ -51,20 +60,22 @@ public class EmpleadoService {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Object> getEmpledoDTO(Long id){
+    public Map<String, Object> getEmpledoDTO(Long id) {
         Empleado empleado = empleadoRepository.getById(id);
         Map<String, Object> dto = new LinkedHashMap<>();
-        dto.put("ID", empleado.getId());
-        dto.put("name", empleado.getName());
+        dto.put("id", empleado.getId());
+        dto.put("name",empleado.getName());
         dto.put("lastName", empleado.getLastName());
         dto.put("enterpriseID", empleado.getEnterpriseID());
-        dto.put("phoneNumber", empleado.getPhoneNumber());
+        dto.put("resourceNumber", empleado.getResourceNumber());
+        dto.put("gender",empleado.getGender());
         dto.put("resourceRole", empleado.getResourceRole());
         dto.put("englishLevel", empleado.getEnglishLevel());
         dto.put("officeLocation", empleado.getOfficeLocation());
-        dto.put("project", empleado.getProject());
-        dto.put("client", empleado.getClient());
-        dto.put("active", empleado.getStatusEmpleado());
+        dto.put("client",empleado.getClient());
+        dto.put("project",empleado.getProject());
+        dto.put("statusEmpleado", empleado.getStatusEmpleado());
+
         return dto;
     }
 
@@ -142,8 +153,8 @@ public class EmpleadoService {
         if (empleado.getEnterpriseID() != null && empleado.getEnterpriseID() != changeEmpleado.getEnterpriseID()) {
             changeEmpleado.setEnterpriseID(empleado.getEnterpriseID());
         }
-        if (empleado.getPhoneNumber() != null && empleado.getPhoneNumber() != changeEmpleado.getPhoneNumber()) {
-            changeEmpleado.setPhoneNumber(empleado.getPhoneNumber());
+        if (empleado.getResourceNumber() != null && empleado.getResourceNumber() != changeEmpleado.getResourceNumber()) {
+            changeEmpleado.setResourceNumber(empleado.getResourceNumber());
         }
         if (empleado.getGender() != null && empleado.getGender() != changeEmpleado.getGender()) {
             changeEmpleado.setGender(empleado.getGender());
