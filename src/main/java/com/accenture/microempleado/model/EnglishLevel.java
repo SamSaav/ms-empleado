@@ -1,23 +1,23 @@
 package com.accenture.microempleado.model;
 
 public enum EnglishLevel {
-    NO_TEST{
-        public String toString(){
+    NO_TEST {
+        public String toString() {
             return "No completo el test";
         }
     },
-    LEVEL_1{
-        public String toString(){
+    LEVEL_1 {
+        public String toString() {
             return "Level 1-Beginner";
         }
     },
-    LEVEL_2{
-        public String toString(){
+    LEVEL_2 {
+        public String toString() {
             return "Level 2-Beginner";
         }
     },
-    LEVEL_3{
-        public String toString(){
+    LEVEL_3 {
+        public String toString() {
             return "Level 3-Beginner";
         }
     },

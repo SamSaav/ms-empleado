@@ -4,6 +4,7 @@ package com.accenture.microempleado.controller;
 import com.accenture.microempleado.model.Empleado;
 import com.accenture.microempleado.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,12 @@ public class EmpleadoController {
 
     @Autowired
     private EmpleadoService empleadoService;
+
+    @GetMapping("employees")
+    @ResponseBody
+    public List<Object> showAllEmployees() {
+        return empleadoService.getAllEmpleados();
+    }
 
     @GetMapping("active")
     @ResponseBody
@@ -36,7 +43,7 @@ public class EmpleadoController {
 
     @PostMapping
     @ResponseBody
-    public Empleado createEmpleado(@RequestBody Empleado empleado){
+    public ResponseEntity<String> createEmpleado(@RequestBody Empleado empleado) {
         return empleadoService.saveEmpleado(empleado);
     }
 

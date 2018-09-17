@@ -16,8 +16,8 @@ public class Empleado {
     private String lastName;
     @Column(name = "EMP_ENTERPRISE_ID")
     private String enterpriseID;
-    @Column(name = "EMP_PHONE")
-    private Integer phoneNumber;
+    @Column(name = "EMP_RESOURCE_NUMBER")
+    private Integer resourceNumber;
     @Column(name = "EMP_GENDER")
     private String gender;
     @Column(name = "EMP_RESOURCE_ROLE")
@@ -37,11 +37,11 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String name, String lastName, String enterpriseID, Integer phoneNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
+    public Empleado(String name, String lastName, String enterpriseID, Integer resourceNumber, String gender, String resourceRole, String englishLevel, String officeLocation) {
         this.name = name;
         this.lastName = lastName;
         this.enterpriseID = enterpriseID;
-        this.phoneNumber = phoneNumber;
+        this.resourceNumber = resourceNumber;
         this.gender = gender;
         this.resourceRole = resourceRole;
         this.englishLevel = englishLevel;
@@ -81,12 +81,12 @@ public class Empleado {
         this.enterpriseID = enterpriseID;
     }
 
-    public Integer getPhoneNumber() {
-        return phoneNumber;
+    public Integer getResourceNumber() {
+        return resourceNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setResourceNumber(Integer resourceNumber) {
+        this.resourceNumber = resourceNumber;
     }
 
     public String getGender() {
