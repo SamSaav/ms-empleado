@@ -49,21 +49,6 @@ public class Empleado {
         this.statusEmpleado = true;
     }
 
-
-    public Empleado updateEmpleadoData(Empleado empleado){
-        this.setName(empleado.getName());
-        this.setLastName(empleado.getLastName());
-        this.setEnterpriseID(empleado.getEnterpriseID());
-        this.setPhoneNumber(empleado.getPhoneNumber());
-        this.setGender(empleado.getGender());
-        this.setResourceRole(empleado.getResourceRole());
-        this.setEnglishLevel(empleado.getEnglishLevel());
-        this.setOfficeLocation(empleado.getOfficeLocation());
-        this.setClient(empleado.getClient());
-        this.setProject(empleado.getProject());
-        return this;
-    }
-
     public long getId() {
         return id;
     }

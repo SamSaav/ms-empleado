@@ -40,13 +40,13 @@ public class EmpleadoController {
         return empleadoService.saveEmpleado(empleado);
     }
 
-    @PostMapping("update") // cambiar por un put
+    @PutMapping("update/{id}")
     @ResponseBody
-    public Boolean updateEmpleado(@RequestBody Empleado empleado){
-        return empleadoService.updateEmpleado(empleado);
+    public Boolean updateEmpleado(@PathVariable("id") Long id, @RequestBody Empleado empleado){
+        return empleadoService.updateEmpleado(id, empleado);
     }
 
-    @PostMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     @ResponseBody
     public Map<String, Object> deleteEmpleado(@PathVariable Long id){
         return empleadoService.makeDeleteDTO(id);

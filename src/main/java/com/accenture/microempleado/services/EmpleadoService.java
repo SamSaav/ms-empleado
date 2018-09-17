@@ -68,11 +68,10 @@ public class EmpleadoService {
         return dto;
     }
 
-    public Boolean updateEmpleado(Empleado empleado){
-        if (empleado != null && empleadoRepository.findById(empleado.getId()) != null) {
-            Empleado changedEmpleado = empleadoRepository.findById(empleado.getId()).get();
-            changedEmpleado.updateEmpleadoData(empleado);
-            empleadoRepository.save(changedEmpleado);
+    public Boolean updateEmpleado(Long id, Empleado empleado){
+        if (empleado != null && empleadoRepository.getById(id) != null) {
+            Empleado changedEmpleado = empleadoRepository.getById(id);
+            empleadoRepository.save(updateEmpleadoData(changedEmpleado, empleado));
             return true;
         } else return false;
     }
@@ -131,6 +130,40 @@ public class EmpleadoService {
 
     public List<Object> makeRemovedDTO(List<Long> ids){
         return ids.stream().map(m->makeRemoveDTO(m)).collect(Collectors.toList());
+    }
+
+    public Empleado updateEmpleadoData(Empleado changeEmpleado, Empleado empleado){
+        if (empleado.getName() != null && empleado.getName() != changeEmpleado.getName()) {
+            changeEmpleado.setName(empleado.getName());
+        }
+        if (empleado.getLastName() != null && empleado.getLastName() != changeEmpleado.getLastName()) {
+            changeEmpleado.setLastName(empleado.getLastName());
+        }
+        if (empleado.getEnterpriseID() != null && empleado.getEnterpriseID() != changeEmpleado.getEnterpriseID()) {
+            changeEmpleado.setEnterpriseID(empleado.getEnterpriseID());
+        }
+        if (empleado.getPhoneNumber() != null && empleado.getPhoneNumber() != changeEmpleado.getPhoneNumber()) {
+            changeEmpleado.setPhoneNumber(empleado.getPhoneNumber());
+        }
+        if (empleado.getGender() != null && empleado.getGender() != changeEmpleado.getGender()) {
+            changeEmpleado.setGender(empleado.getGender());
+        }
+        if (empleado.getResourceRole() != null && empleado.getResourceRole() != changeEmpleado.getResourceRole()) {
+            changeEmpleado.setResourceRole(empleado.getResourceRole());
+        }
+        if (empleado.getEnglishLevel() != null && empleado.getEnglishLevel() != changeEmpleado.getEnglishLevel()) {
+            changeEmpleado.setEnglishLevel(empleado.getEnglishLevel());
+        }
+        if (empleado.getOfficeLocation() != null && empleado.getOfficeLocation() != changeEmpleado.getOfficeLocation()) {
+            changeEmpleado.setOfficeLocation(empleado.getOfficeLocation());
+        }
+        if (empleado.getClient() != null && empleado.getClient() != changeEmpleado.getClient()) {
+            changeEmpleado.setClient(empleado.getClient());
+        }
+        if (empleado.getProject() != null && empleado.getProject() != changeEmpleado.getProject()) {
+            changeEmpleado.setProject(empleado.getProject());
+        }
+        return changeEmpleado;
     }
 
 }
