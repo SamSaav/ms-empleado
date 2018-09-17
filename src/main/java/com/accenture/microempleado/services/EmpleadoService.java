@@ -54,17 +54,17 @@ public class EmpleadoService {
     public Map<String, Object> getEmpledoDTO(Long id){
         Empleado empleado = empleadoRepository.getById(id);
         Map<String, Object> dto = new LinkedHashMap<>();
-        dto.put("ID", empleado.getId());
+        dto.put("id", empleado.getId());
         dto.put("name", empleado.getName());
         dto.put("lastName", empleado.getLastName());
         dto.put("enterpriseID", empleado.getEnterpriseID());
-        dto.put("phoneNumber", empleado.getPhoneNumber());
+        dto.put("resourceNumber", empleado.getPhoneNumber());
         dto.put("resourceRole", empleado.getResourceRole());
         dto.put("englishLevel", empleado.getEnglishLevel());
         dto.put("officeLocation", empleado.getOfficeLocation());
         dto.put("project", empleado.getProject());
         dto.put("client", empleado.getClient());
-        dto.put("active", empleado.getStatusEmpleado());
+        dto.put("statusEmpleado", empleado.getStatusEmpleado());
         return dto;
     }
 
