@@ -23,18 +23,6 @@ public class EmpleadoController {
         return empleadoService.getAllEmpleados();
     }
 
-    @GetMapping("active")
-    @ResponseBody
-    public List<Object> showAllActive(){
-        return empleadoService.getAllEmpleadosActivos();
-    }
-
-    @GetMapping("hiden")
-    @ResponseBody
-    public List<Object> showAllInactive(){
-        return empleadoService.getAllEmpleadosInactivos();
-    }
-
     @GetMapping("{id}")
     @ResponseBody
     public Object getEmpleado(@PathVariable("id") Long id){

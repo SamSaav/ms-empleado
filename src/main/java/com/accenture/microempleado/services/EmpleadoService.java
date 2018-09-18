@@ -23,16 +23,6 @@ public class EmpleadoService {
         return empleadoRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    public List<Object> getAllEmpleadosActivos() {
-        List<Empleado> lstEmpleados = empleadoRepository.findAll();
-        return makeListEmpleadosActivos(lstEmpleados);
-    }
-
-    public  List<Object> getAllEmpleadosInactivos(){
-        List<Empleado> lstEmpleados = empleadoRepository.findAll();
-        return makeListEmpleadosInactivos(lstEmpleados);
-    }
-
     public Map<String, Object> getOneEmpleado(Long id){
         Empleado empleado = empleadoRepository.getById(id);
         return getEmpledoDTO(empleado.getId());
