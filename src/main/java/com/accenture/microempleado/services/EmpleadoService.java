@@ -28,12 +28,13 @@ public class EmpleadoService {
         return getEmpledoDTO(empleado.getId());
     }
 
-    public ResponseEntity<String> saveEmpleado(Empleado newEmpleado) {
+    public Empleado saveEmpleado(Empleado newEmpleado) {
         if(empleadoRepository.findByEnterpriseID(newEmpleado.getEnterpriseID())!=null){
-            return new ResponseEntity<>("Enterprise ID ya existe", HttpStatus.FORBIDDEN);
+            return null;
         }
+        newEmpleado.setStatusEmpleado(true);
         empleadoRepository.save(newEmpleado);
-        return new ResponseEntity<>("Empleado creado",HttpStatus.OK);
+        return newEmpleado;
     }
 
     public List<Object> makeListEmpleadosActivos(List<Empleado> empleados){

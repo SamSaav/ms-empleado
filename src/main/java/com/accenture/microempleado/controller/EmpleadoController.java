@@ -31,7 +31,7 @@ public class EmpleadoController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<String> createEmpleado(@RequestBody Empleado empleado) {
+    public Empleado createEmpleado(@RequestBody Empleado empleado) {
         return empleadoService.saveEmpleado(empleado);
     }
 
