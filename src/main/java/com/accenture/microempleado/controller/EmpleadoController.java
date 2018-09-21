@@ -23,13 +23,13 @@ public class EmpleadoController {
         return empleadoService.getAllEmpleados();
     }
 
-    @GetMapping("/admin/{id}")
+    @GetMapping("/veedor/{id}")
     @ResponseBody
     public Object getEmpleado(@PathVariable("id") Long id){
         return empleadoService.getOneEmpleado(id);
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/admin/create")
     @ResponseBody
     public Empleado createEmpleado(@RequestBody Empleado empleado) {
         return empleadoService.saveEmpleado(empleado);
