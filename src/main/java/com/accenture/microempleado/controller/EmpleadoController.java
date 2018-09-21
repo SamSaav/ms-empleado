@@ -11,43 +11,43 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class EmpleadoController {
 
     @Autowired
     private EmpleadoService empleadoService;
 
-    @GetMapping("employees")
+    @GetMapping("/veedor/employees")
     @ResponseBody
     public List<Object> showAllEmployees() {
         return empleadoService.getAllEmpleados();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/admin/{id}")
     @ResponseBody
     public Object getEmpleado(@PathVariable("id") Long id){
         return empleadoService.getOneEmpleado(id);
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     @ResponseBody
     public Empleado createEmpleado(@RequestBody Empleado empleado) {
         return empleadoService.saveEmpleado(empleado);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/admin/update/{id}")
     @ResponseBody
     public Boolean updateEmpleado(@PathVariable("id") Long id, @RequestBody Empleado empleado){
         return empleadoService.updateEmpleado(id, empleado);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     @ResponseBody
     public Map<String, Object> deleteEmpleado(@PathVariable Long id){
         return empleadoService.makeDeleteDTO(id);
     }
 
-    @DeleteMapping("permanentDelete/{id}")
+    @DeleteMapping("/admin/permanentDelete/{id}")
     @ResponseBody
     public Map<String, Object> removeEmpleado(@PathVariable("id") Long id){ return empleadoService.makeRemoveDTO(id); }
 
